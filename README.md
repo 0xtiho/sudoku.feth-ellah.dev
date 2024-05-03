@@ -13,7 +13,7 @@ Sudoku Solver is a web application built with Flask that allows users to upload 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/GovDz/sudoku-solver.git
+    git clone https://github.com/GovDz/sudoku.feth-ellah.dev.git
     ```
 
 2. Install the dependencies:
