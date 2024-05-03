@@ -11,8 +11,6 @@ D = 3
 N = D * D
 
 def solve_sudoku(file_path):
-    # Your Sudoku solving logic from the provided script
-    # Make sure to return the solved Sudoku grid or any other relevant output
     try:
         clues = []
         digits = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
