@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Sudoku Solver</title>
+</head>
+
+<body>
+    <h1>Sudoku Solver</h1>
+    <div class="intro">
+        <p>Welcome to our Sudoku Solver! Our solver is designed to help you solve Sudoku puzzles quickly and
+            efficiently. Whether you're a beginner or an experienced player, our solver can assist you in finding the
+            solution to any Sudoku puzzle.
+            To use our Sudoku Solver, simply upload a Sudoku puzzle in text format, and our solver will generate the
+            solution for you. You can then view the solution and even download it for reference.
+            Whether you're looking to improve your Sudoku-solving skills or just need help with a particularly
+            challenging puzzle, our Sudoku Solver is here to assist you. Enjoy solving Sudoku puzzles with ease!</p>
+    </div>
+
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt">
+        <button type="submit" class="glowing-btn" name="option" value="upload">
+            <span class="glowing-txt">Upload</span>
+        </button>
+    </form>
+
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,851 @@
+/* Helpers */
+@function linear-gradient($direction, $color1, $position1, $color2, $position2) {
+    @return linear-gradient($direction, $color1 $position1, $color2 $position2);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+
+/* Keyframes */
+@keyframes flashlight {
+
+    0%,
+    9% {
+        opacity: 0;
+        clip-path: circle(150px at 45% 10%);
+    }
+
+    10%,
+    15%,
+    85% {
+        opacity: 1;
+    }
+
+    50% {
+        clip-path: circle(150px at 60% 20%);
+    }
+
+    54%,
+    100% {
+        clip-path: circle(150px at 55% 92%);
+    }
+
+    88%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes eyes {
+
+    0%,
+    52% {
+        opacity: 0;
+    }
+
+    53%,
+    87% {
+        opacity: 1;
+    }
+
+    64% {
+        transform: scaleY(1);
+    }
+
+    67% {
+        transform: scaleY(0);
+    }
+
+    70% {
+        transform: scaleY(1);
+    }
+
+    88%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.title {
+    font-size: 4em;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    margin-top: 10vh;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1em;
+    animation: glowing 1.5s ease-in-out infinite alternate;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    margin: 10vh 10vh 0vh 10vh;
+    color: #fff;
+    font-weight: 700;
+    animation: glowing 1.5s ease-in-out infinite alternate;
+}
+
+
+
+p,
+.intro,
+label {
+    font-size: 16px;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    margin: 10vh 10vh;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+label {
+    font-size: 16px;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    margin: 5vh 5vh;
+    color: #fff;
+    font-weight: 700;
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 10px rgba(128, 255, 0, 0.5),
+            0 0 20px rgba(0, 255, 0, 0.5),
+            0 0 30px rgba(119, 255, 0, 0.5);
+    }
+
+    100% {
+        text-shadow: 0 0 20px rgba(122, 255, 34, 0.32),
+            0 0 30px rgba(0, 255, 0, 0.352),
+            0 0 40px rgba(63, 255, 85, 0.383),
+            0 0 50px rgba(119, 255, 0, 0.415);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: #000;
+    line-height: 1.6;
+    position: relative;
+    font-family: sans-serif;
+}
+
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    margin: auto;
+    width: 90vw;
+}
+
+.line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.line::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    animation: drop 7s 0s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+    margin-left: -25%;
+}
+
+.line:nth-child(1)::after {
+    animation-delay: 2s;
+}
+
+.line:nth-child(3) {
+    margin-left: 25%;
+}
+
+.line:nth-child(3)::after {
+    animation-delay: 2.5s;
+}
+
+@keyframes drop {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+
+
+#wrapper {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+}
+
+.my-super-cool-btn {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    box-sizing: border-box;
+}
+
+.my-super-cool-btn span {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    width: 150px;
+    height: 150px;
+}
+
+.my-super-cool-btn span:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    border: 7px solid #82ff23;
+    box-sizing: border-box;
+    transition: all .85s cubic-bezier(0.25, 1, 0.33, 1);
+    box-shadow: 0 30px 85px rgba(0, 0, 0, 0.14), 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+.my-super-cool-btn:hover span:before {
+    transform: scale(0.8);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.14), 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+.my-super-cool-btn .dots-container {
+    opacity: 0;
+    animation: intro 1.6s;
+    animation-fill-mode: forwards;
+}
+
+.my-super-cool-btn .dot {
+    width: 8px;
+    height: 8px;
+    display: block;
+    background-color: #ffffff;
+    border-radius: 100%;
+    position: absolute;
+    transition: all .85s cubic-bezier(0.25, 1, 0.33, 1);
+}
+
+.my-super-cool-btn .dot:nth-child(1) {
+    top: 50px;
+    left: 50px;
+    transform: rotate(-140deg);
+    animation: swag1-out 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.my-super-cool-btn .dot:nth-child(2) {
+    top: 50px;
+    right: 50px;
+    transform: rotate(140deg);
+    animation: swag2-out 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.my-super-cool-btn .dot:nth-child(3) {
+    bottom: 50px;
+    left: 50px;
+    transform: rotate(140deg);
+    animation: swag3-out 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.my-super-cool-btn .dot:nth-child(4) {
+    bottom: 50px;
+    right: 50px;
+    transform: rotate(-140deg);
+    animation: swag4-out 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.my-super-cool-btn:hover .dot:nth-child(1) {
+    animation: swag1 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.my-super-cool-btn:hover .dot:nth-child(2) {
+    animation: swag2 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.my-super-cool-btn:hover .dot:nth-child(3) {
+    animation: swag3 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.my-super-cool-btn:hover .dot:nth-child(4) {
+    animation: swag4 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes intro {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes swag1 {
+    0% {
+        top: 50px;
+        left: 50px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        left: 20px;
+        width: 8px;
+        opacity: 1;
+    }
+}
+
+@keyframes swag1-out {
+    0% {
+        top: 20px;
+        left: 20px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 50px;
+        left: 50px;
+        width: 8px;
+        opacity: 0;
+    }
+}
+
+@keyframes swag2 {
+    0% {
+        top: 50px;
+        right: 50px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        right: 20px;
+        width: 8px;
+        opacity: 1;
+    }
+}
+
+@keyframes swag2-out {
+    0% {
+        top: 20px;
+        right: 20px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 50px;
+        right: 50px;
+        width: 8px;
+        opacity: 0;
+    }
+}
+
+@keyframes swag3 {
+    0% {
+        bottom: 50px;
+        left: 50px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 20px;
+        left: 20px;
+        width: 8px;
+        opacity: 1;
+    }
+}
+
+@keyframes swag3-out {
+    0% {
+        bottom: 20px;
+        left: 20px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 50px;
+        left: 50px;
+        width: 8px;
+        opacity: 0;
+    }
+}
+
+@keyframes swag4 {
+    0% {
+        bottom: 50px;
+        right: 50px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 20px;
+        right: 20px;
+        width: 8px;
+        opacity: 1;
+    }
+}
+
+@keyframes swag4-out {
+    0% {
+        bottom: 20px;
+        right: 20px;
+        width: 8px;
+    }
+
+    50% {
+        width: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 50px;
+        right: 50px;
+        width: 8px;
+        opacity: 0;
+    }
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+:root {
+    --glow-color: hsl(113, 100%, 51%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.glowing-btn {
+    position: relative;
+    color: var(--glow-color);
+    cursor: pointer;
+    padding: 0.5em 1em;
+    /* Adjusted padding */
+    border: 0.15em solid var(--glow-color);
+    border-radius: 0.45em;
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.8em;
+    /* Adjusted font size */
+    font-weight: 900;
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    animation: border-flicker 2s linear infinite;
+
+    /* Center text vertically */
+    line-height: 1.5;
+    /* Adjust as needed */
+}
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.glowing-txt {
+    float: left;
+    -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+}
+
+.faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.7;
+    filter: blur(1em);
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+    background: var(--glow-color);
+    pointer-events: none;
+}
+
+.glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 2em 0.2em var(--glow-color);
+    transition: opacity 100ms linear;
+}
+
+.glowing-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: none;
+    animation: none;
+}
+
+.glowing-btn:hover .glowing-txt {
+    animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+    animation: none;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.glowing-btn:hover:before {
+    filter: blur(1.5em);
+    opacity: 1;
+}
+
+.glowing-btn:hover:after {
+    opacity: 1;
+}
+
+@keyframes faulty-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 0.1;
+    }
+
+    4% {
+        opacity: 0.5;
+    }
+
+    19% {
+        opacity: 0.5;
+    }
+
+    21% {
+        opacity: 0.1;
+    }
+
+    23% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    83% {
+        opacity: 0.4;
+    }
+
+    87% {
+        opacity: 1;
+    }
+}
+
+@keyframes text-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    8% {
+        opacity: 0.1;
+    }
+
+    9% {
+        opacity: 1;
+    }
+
+    12% {
+        opacity: 0.1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.3;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    72% {
+        opacity: 0.2;
+    }
+
+    77% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes border-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    4% {
+        opacity: 0.1;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .glowing-btn {
+        font-size: 1em;
+    }
+}
+
+/* Update the table style */
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+    background-color: #333;
+    /* Set a dark background color */
+    color: #fff;
+    /* Set text color to white for better contrast */
+}
+
+th,
+td {
+    border: 1px solid #1eff009a;
+    /* Set border color to white */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #555;
+    /* Darker background color for header */
+}
+
+
+label {
+    display: block;
+    margin-bottom: 20px;
+    color: #ffffff;
+
+}
+
+
+select {
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* CSS for centering the input file element */
+form {
+    position: relative;
+    /* Set position to relative */
+    display: flex;
+    /* Use flexbox */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+}
+
+input[type="file"] {
+    padding: 10px;
+    /* Add padding */
+    border: 2px solid #4CAF50;
+    /* Add border */
+    border-radius: 5px;
+    /* Add border radius */
+    background-color: #f0f0f0;
+    /* Add background color */
+    color: #333;
+    /* Add text color */
+    font-size: 16px;
+    /* Set font size */
+    transition: border-color 0.3s ease;
+    /* Add transition effect for border color */
+    cursor: pointer;
+    /* Change cursor to pointer */
+    flex: 1;
+    /* Take up remaining space */
+    max-width: 300px;
+    /* Set maximum width */
+}
+
+/* CSS for styling the input file element on hover */
+input[type="file"]:hover {
+    border-color: #45a049;
+    /* Change border color on hover */
+}
+
+/* CSS for styling the input file element when focused */
+input[type="file"]:focus {
+    outline: none;
+    /* Remove outline */
+    border-color: #45a049;
+    /* Change border color when focused */
+}
+
+/* CSS for positioning the upload button */
+button[type="submit"] {
+    margin-left: 10px;
+    /* Add margin to separate from the input file element */
+}
+
+.card-container {
+    max-width: 20%;
+    /* Adjust the maximum width as desired */
+    margin: auto;
+    margin-bottom: 20px;
+    /* Center the container horizontally */
+}
+
+pre {
+    color: white;
+    background-color: rgba(98, 255, 70, 0.42);
+    font-size: 16px;
+    padding: 20px;
+    border: 2px solid rgba(98, 255, 70, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(98, 255, 70, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-line;
+
+}
